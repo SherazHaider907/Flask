@@ -1,16 +1,41 @@
-from flask import Flask
+from flask import Flask , request , redirect , url_for , session , Response
+
 
 app = Flask(__name__)
+app.secret_key = "supersecretkey" # Set a secret key for session management
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+# home page
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
 
-@app.route("/about")
-def about():
-    return "<p>This is the about page.</p>"
+        if username == 'admin' and password == '1234':
+            session['username'] = username # Store the username in the session
+            return redirect(url_for('welcome'))
+        else:
+            return Response('Invalid credentials', status=401, mimetype='text/plain')
+    return '''
+        <form method="post">
+            <input type="text" name="username" placeholder="Username" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <input type="submit" value="Login">
+        </form>
+    '''
 
-@app.route("/contact")
-def contact():
-    return "<p>Contact us</p>"
+# welcome page
+@app.route('/welcome')
+def welcome():
+    if 'username' in session:
+        return f''' 
+            <h1>Welcome, {session['username']}!</h1>
+            <a href={url_for('logout')}>Logout</a>
+        '''
+    return redirect(url_for('login'))
 
+# logout page
+@app.route('/logout')
+def logout():
+    session.pop('username', None) # Remove the username from the session
+    return redirect(url_for('login'))
