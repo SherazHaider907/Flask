@@ -1,0 +1,163 @@
+/* Basic page style */
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* Shared card style for auth and task pages */
+.auth-container,
+.container {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Auth form layout */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.auth-form input,
+.task-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.switch-link {
+    margin-top: 12px;
+}
+
+/* Top row in task page */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.logout-link {
+    color: #dc2626;
+    text-decoration: none;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.subtitle {
+    color: #666;
+    margin-top: 4px;
+}
+
+/* Add task form */
+.task-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.task-form input {
+    flex: 1;
+}
+
+button {
+    border: none;
+    border-radius: 6px;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.task-form button {
+    background: #2563eb;
+    color: white;
+}
+
+/* Task list */
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.task-item.completed span {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.toggle-btn {
+    background: #10b981;
+    color: white;
+}
+
+.delete-btn {
+    background: #ef4444;
+    color: white;
+}
+
+/* Flash messages */
+.alert {
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+}
+
+.alert.success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.alert.danger {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.alert.info {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.alert.warning {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.empty-state {
+    color: #777;
+    font-style: italic;
+}

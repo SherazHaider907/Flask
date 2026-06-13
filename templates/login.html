@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="auth-container">
+    <h1>Login</h1>
+    <p class="subtitle">Sign in to manage your tasks.</p>
+
+    <!-- Show messages like errors or success feedback -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="post" class="auth-form">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <p class="switch-link">
+        New here? <a href="{{ url_for('auth.register') }}">Create an account</a>
+    </p>
+</div>
+{% endblock %}
